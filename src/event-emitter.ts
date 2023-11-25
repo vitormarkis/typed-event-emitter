@@ -9,13 +9,13 @@ type HandlersMapping<Events extends EventsTuple> = {
 export class EventEmitter<EventArgs extends EventsTuple> {
   private handlers: Partial<HandlersMapping<EventArgs>> = {}
 
-  on<TEventName extends keyof EventArgs>(event: TEventName, listener: EventHandler<EventArgs[TEventName]>) {
-    const eventListeners = this.handlers[event] as EventHandlers<EventArgs[TEventName]>
-    if (!eventListeners) {
-      this.handlers[event] = [listener]
+  on<TEventName extends keyof EventArgs>(event: TEventName, handler: EventHandler<EventArgs[TEventName]>) {
+    const eventHandlers = this.handlers[event] as EventHandlers<EventArgs[TEventName]>
+    if (!eventHandlers) {
+      this.handlers[event] = [handler]
       return
     }
-    eventListeners.push(listener)
+    eventHandlers.push(handler)
   }
 
   emit<TEventName extends keyof EventArgs>(event: TEventName, ...args: EventArgs[TEventName]) {

@@ -1,13 +1,13 @@
 export class EventEmitter {
   handlers = {}
 
-  on(event, listener) {
-    const eventListeners = this.handlers[event]
-    if (!eventListeners) {
-      this.handlers[event] = [listener]
+  on(eventName, handler) {
+    const eventHandlers = this.handlers[eventName]
+    if (!eventHandlers) {
+      this.handlers[eventName] = [handler]
       return
     }
-    eventListeners.push(listener)
+    eventHandlers.push(handler)
   }
 
   emit(event, ...args) {
@@ -15,5 +15,3 @@ export class EventEmitter {
     eventHandlers?.forEach(handler => handler(...args))
   }
 }
-
-export const userEventEmitter = new EventsEmitter()
