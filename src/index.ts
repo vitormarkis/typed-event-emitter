@@ -62,6 +62,6 @@ setTimeout(() => {
   eventEmitter.emit("hasSession", {
     id_user: "123",
     when: new Date(),
-    token: "nsuhf2h838h2"
+    token: "m002u7wd23i8m",
   })
 }, 7000)
